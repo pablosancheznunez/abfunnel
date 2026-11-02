@@ -1,0 +1,112 @@
+---
+title: "Running a digital marketing experiment to research standards"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Running a digital marketing experiment to research standards}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, dpi = 96)
+```
+
+Online experiments are the strongest evidence digital marketing research can
+produce, and also easy to get wrong: too small to detect the effect of
+interest, broken randomisation that nobody checks, many variants and metrics
+with no correction, and reports that give a p-value but not the size of the
+effect. abfunnel follows the experiment from plan to report so that each of
+these steps is done and documented.
+
+```{r}
+library(abfunnel)
+```
+
+## 1. Plan before you start
+
+A checkout converts at about 4%. We want to detect a 10% relative lift (to
+4.4%), with 80% power and a 5% significance level:
+
+```{r}
+plan <- af_design(baseline = 0.04, mde = 0.10, daily_traffic = 6000)
+plan
+```
+
+Smaller effects need far larger samples; testing two variants against the
+control divides the significance level between them:
+
+```{r}
+af_design(0.04, 0.10, variants = 2)$n_control
+af_design(0.04, 0.05)$n_control
+```
+
+Write the plan down before the experiment starts. `af_preregistration_template()`
+copies a Markdown template with the hypotheses, metrics, sample size, stopping
+rule and analysis plan; deposit it on OSF or Zenodo for a time-stamped record.
+
+## 2. Check the randomisation
+
+The demo data are a **synthetic** checkout experiment with three groups and
+known effects (see `?experiment_demo`).
+
+```{r}
+experiment_demo
+af_srm(experiment_demo)
+```
+
+A sample ratio mismatch, a difference between the planned and observed
+allocation larger than chance allows, means that something in assignment,
+tracking or eligibility went wrong. When it happens, stop: the effects
+estimated below would not be trustworthy.
+
+```{r}
+af_srm(c(control = 50900, variant = 49100))
+```
+
+## 3. Estimate the effects
+
+```{r}
+res <- af_analyse(experiment_demo)
+res
+```
+
+For each variant the analysis reports the absolute difference and the relative
+lift with their confidence intervals, a test adjusted for the number of
+variants and the Bayesian probability of beating the control. For the clear
+call to action the estimated lift is about 19%, and its interval contains the
+true 15% built into the data. Social proof, whose true effect is about 3%, is
+compatible with no effect: an effect that small is below what the sample was
+planned to detect.
+
+```{r, fig.height = 2.6}
+af_plot_lift(res)
+```
+
+## 4. Look inside the funnel
+
+```{r}
+f <- af_funnel(funnel_demo)
+f[f$arm != "control", c("arm", "step", "from_previous", "diff_from_start")]
+```
+
+```{r, fig.height = 3.6}
+af_plot_funnel(f)
+```
+
+The funnel shows where each change acts: the call to action at the last step,
+social proof at the cart.
+
+## 5. Report
+
+```{r, eval = FALSE}
+af_report(experiment_demo, "checkout-test.html",
+          title = "Checkout call-to-action test",
+          hypothesis = "A clearer call to action increases purchases.",
+          preregistration = "https://osf.io/xxxxx",
+          design = plan, funnel = f)
+```
+
+The report is a single HTML file that opens with a plain-language summary,
+then the sample ratio check, the effects with intervals, the funnel, the
+planned against the achieved sample and the method. Report every variant and
+every pre-registered metric, including those that did not move.

@@ -1,0 +1,37 @@
+Package: abfunnel
+Title: Design, Check and Analyse Digital Marketing Experiments and Funnels
+Version: 0.1.0
+Authors@R:
+    person("Pablo", "Sánchez-Núñez", email = "psancheznunez@outlook.com",
+           role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0001-7845-9506"))
+Description: Supports online controlled experiments (A/B and A/B/n tests)
+    and conversion funnels in digital marketing research, from planning to
+    reporting. Plans sample size and duration, checks sample ratio mismatch
+    (Fabijan et al., 2019, <doi:10.1145/3292500.3330722>), and estimates
+    differences and relative lifts with confidence intervals, Holm-adjusted
+    tests and the Bayesian probability that each variant beats the control.
+    Analyses each step of a funnel and writes a self-contained report that
+    puts effect sizes and uncertainty before significance, with a template
+    for pre-registering experiments.
+License: MIT + file LICENSE
+URL: https://pablosancheznunez.com/abfunnel/,
+    https://github.com/pablosancheznunez/abfunnel
+BugReports: https://github.com/pablosancheznunez/abfunnel/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    grDevices,
+    graphics,
+    stats,
+    utils
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-GB
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.1

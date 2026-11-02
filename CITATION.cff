@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use abfunnel, please cite it as below."
+type: software
+title: "abfunnel: Design, Check and Analyse Digital Marketing Experiments and Funnels"
+version: 0.1.0
+date-released: 2026-11-02
+authors:
+  - family-names: "Sánchez-Núñez"
+    given-names: "Pablo"
+    orcid: "https://orcid.org/0000-0001-7845-9506"
+url: "https://pablosancheznunez.com/abfunnel/"
+repository-code: "https://github.com/pablosancheznunez/abfunnel"
+license: MIT
+keywords:
+  - digital marketing
+  - online experiments
+  - A/B testing
+  - conversion funnels
+  - sample ratio mismatch
+  - pre-registration
+  - R
+abstract: >-
+  An R package that supports online controlled experiments and conversion
+  funnels in digital marketing research, from sample size planning and
+  pre-registration to sample ratio checks, effect estimates with confidence
+  intervals and a self-contained report.

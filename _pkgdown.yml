@@ -1,0 +1,48 @@
+url: https://pablosancheznunez.com/abfunnel/
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#0b5d75"
+  opengraph:
+    image:
+      src: man/figures/card.png
+      alt: "abfunnel: design, check and analyse digital marketing experiments and funnels"
+
+authors:
+  Pablo Sánchez-Núñez:
+    href: https://pablosancheznunez.com
+
+home:
+  links:
+  - text: Example report
+    href: https://pablosancheznunez.com/abfunnel/example/report.html
+  - text: Author website
+    href: https://pablosancheznunez.com
+
+navbar:
+  structure:
+    left: [intro, reference, news]
+    right: [search, github]
+
+reference:
+- title: Plan
+  contents:
+  - af_design
+  - af_preregistration_template
+- title: Check
+  contents:
+  - af_srm
+- title: Estimate
+  contents:
+  - af_experiment
+  - af_analyse
+  - af_funnel
+- title: Report
+  contents:
+  - af_plot_lift
+  - af_plot_funnel
+  - af_report
+- title: Example data
+  contents:
+  - demo-data

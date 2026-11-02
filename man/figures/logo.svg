@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 278" width="240" height="278" role="img" aria-label="abfunnel logo">
+  <polygon points="120,4 236,71 236,207 120,274 4,207 4,71" fill="#0b5d75" stroke="#084656" stroke-width="6"/>
+  <path d="M58 78 H182 L152 112 H88 Z" fill="#ffffff" opacity=".95"/>
+  <path d="M90 118 H150 L134 138 H106 Z" fill="#ffffff" opacity=".8"/>
+  <path d="M108 144 H132 L126 154 H114 Z" fill="#e3a33b"/>
+  <rect x="62" y="160" width="40" height="22" rx="5" fill="#ffffff" opacity=".95"/>
+  <text x="82" y="176" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#0b5d75">A</text>
+  <rect x="138" y="160" width="40" height="22" rx="5" fill="#e3a33b"/>
+  <text x="158" y="176" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#ffffff">B</text>
+  <text x="120" y="226" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#ffffff">abfunnel</text>
+</svg>

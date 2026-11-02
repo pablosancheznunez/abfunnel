@@ -1,0 +1,7 @@
+# Paths whose changes need the maintainer's review.
+/R/design.R @pablosancheznunez
+/R/analyse.R @pablosancheznunez
+/R/funnel.R @pablosancheznunez
+/data-raw/ @pablosancheznunez
+/data/ @pablosancheznunez
+/.github/ @pablosancheznunez
