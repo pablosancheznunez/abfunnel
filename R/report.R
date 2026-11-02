@@ -119,7 +119,7 @@ af_report <- function(x, file = "experiment-report.html", title = "Experiment re
             if (srm$mismatch) sprintf("Mismatch: chi-squared = %.2f, p = %s. Investigate assignment, tracking and eligibility before using any result.", srm$statistic, format.pval(srm$p_value, digits = 2))
             else sprintf("Passed: chi-squared = %.2f, p = %s. Allocation matches the plan.", srm$statistic, format.pval(srm$p_value, digits = 2)),
             html_table(groups)),
-    sprintf("<section><h2>2. Effects</h2><p>Each variant compared with the control group, “%s”. Intervals are %s; p-values adjusted with Holm's method.</p>%s<img src=\"%s\" alt=\"Relative lift of each variant with confidence intervals\"></section>",
+    sprintf("<section><h2>2. Effects</h2><p>Each variant compared with the control group, &ldquo;%s&rdquo;. Intervals are %s; p-values adjusted with Holm's method.</p>%s<img src=\"%s\" alt=\"Relative lift of each variant with confidence intervals\"></section>",
             esc(res$control[1]), lvl, html_table(effects), plot_uri(7, 1.4 + 0.5 * nrow(res), af_plot_lift(res))),
     if (!is.null(funnel)) {
       ft <- data.frame(check.names = FALSE, Group = funnel$arm, Step = funnel$step, Participants = format(funnel$users, big.mark = ","),
